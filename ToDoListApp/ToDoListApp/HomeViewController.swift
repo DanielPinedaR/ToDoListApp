@@ -19,7 +19,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func setupTableView(){
-        taskTableView.register(TaskTableViewCell.self, forCellReuseIdentifier: "taskCell")
+        let nib = UINib(nibName: "TaskTableViewCell", bundle: nil)
+        taskTableView.register(nib, forCellReuseIdentifier: "TaskTableViewCell")
         taskTableView.delegate = self
         taskTableView.dataSource = self
     }
@@ -29,7 +30,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "taskcell", for: indexPath) as! TaskTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
+        cell.taskLabel.text = "prueba"
         return cell
     }
 

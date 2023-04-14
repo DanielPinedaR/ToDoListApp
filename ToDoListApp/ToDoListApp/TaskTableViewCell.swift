@@ -9,8 +9,11 @@ import UIKit
 
 class TaskTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var taskLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        taskLabel.textColor = .black
         // Initialization code
     }
 
