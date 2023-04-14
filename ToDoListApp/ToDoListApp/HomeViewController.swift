@@ -9,9 +9,10 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    lazy var arrayTask: [String] = []
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskTableView: UITableView!
-    
+    @IBOutlet weak var addTaskButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -31,9 +32,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
-        cell.taskLabel.text = "prueba"
         return cell
     }
 
+    @IBAction func addTaskButtonAction(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "AddTaskViewController")
+        self.navigationController?.present(vc, animated: true)
+    }
 }
 
