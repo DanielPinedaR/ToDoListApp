@@ -7,23 +7,30 @@
 
 import UIKit
 
-class AddTaskViewController: UIViewController {
+protocol AddTaskViewControllerDelegate: AnyObject {
+    func addTask(task: String)
+}
 
+class AddTaskViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var addTextField: UITextField!
+    
+    @IBOutlet weak var addButton: UIButton!
+    
+    weak var delegate: AddTaskViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupTextField()
     }
+    func setupTextField(){
+        addTextField.contentVerticalAlignment = .top
+    }
+
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func addButtonAction(_ sender: Any) {
+        delegate?.addTask(task: addTextField.text ?? "")
+        self.dismiss(animated: true)
     }
-    */
-
 }

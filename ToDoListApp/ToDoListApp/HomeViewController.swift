@@ -7,9 +7,14 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddTaskViewControllerDelegate {
+    func addTask(task: String) {
+        arrayTask.append(task)
+        taskTableView.reloadData()
+    }
     
-    lazy var arrayTask: [String] = []
+    
+    var arrayTask: [String] = []
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskTableView: UITableView!
     @IBOutlet weak var addTaskButton: UIButton!
@@ -27,18 +32,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        arrayTask.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
+        cell.taskLabel.text = arrayTask[indexPath.row]
         return cell
     }
 
     @IBAction func addTaskButtonAction(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "AddTaskViewController")
-        self.navigationController?.present(vc, animated: true)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "AddTaskViewController") as? AddTaskViewController {
+            vc.delegate = self
+            self.navigationController?.present(vc, animated: true)
+        }
     }
 }
 

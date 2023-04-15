@@ -31,15 +31,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="L9v-1c-drk">
-                                <rect key="frame" x="20" y="171" width="350" height="629"/>
+                                <rect key="frame" x="20" y="131.33333333333331" width="350" height="668.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lista de tareas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWH-av-ETg">
-                                <rect key="frame" x="117.33333333333333" y="121" width="155.66666666666669" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Kd-Xb-UYu">
                                 <rect key="frame" x="270" y="724" width="80" height="80"/>
                                 <constraints>
@@ -52,18 +46,24 @@
                                     <action selector="addTaskButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dmI-5Q-5Zc"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lista de tareas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWH-av-ETg">
+                                <rect key="frame" x="114" y="70" width="162" height="31.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="L9v-1c-drk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="2bF-TC-wsO"/>
                             <constraint firstAttribute="bottom" secondItem="5Kd-Xb-UYu" secondAttribute="bottom" constant="40" id="MuH-su-k70"/>
-                            <constraint firstItem="OWH-av-ETg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="QR5-vM-WWR"/>
-                            <constraint firstItem="L9v-1c-drk" firstAttribute="top" secondItem="OWH-av-ETg" secondAttribute="bottom" constant="20" id="YBu-ba-lCT"/>
+                            <constraint firstItem="OWH-av-ETg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="70" id="Ndm-cE-AbZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Kd-Xb-UYu" secondAttribute="trailing" constant="40" id="aom-PH-kun"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="L9v-1c-drk" secondAttribute="bottom" constant="10" id="m1G-oL-PGJ"/>
                             <constraint firstItem="OWH-av-ETg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mLG-uk-dhK"/>
                             <constraint firstItem="L9v-1c-drk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qV3-i1-czd"/>
+                            <constraint firstItem="L9v-1c-drk" firstAttribute="top" secondItem="OWH-av-ETg" secondAttribute="bottom" constant="30" id="zO7-ok-geg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="75l-9f-UCq"/>
@@ -75,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="453.84615384615381" y="50.473933649289094"/>
+            <point key="canvasLocation" x="311" y="50"/>
         </scene>
         <!--Add Task View Controller-->
         <scene sceneID="X0N-VO-r9I">
@@ -104,6 +104,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Agregar"/>
+                                <connections>
+                                    <action selector="addButtonAction:" destination="6kP-ZE-KbX" eventType="touchUpInside" id="QL0-6X-o9X"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3hZ-nb-Du2"/>
@@ -116,6 +119,11 @@
                             <constraint firstItem="Rrg-Bs-bW3" firstAttribute="top" secondItem="N93-Bu-SHI" secondAttribute="bottom" constant="50" id="gvg-AQ-IN7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addButton" destination="13w-2u-WOu" id="5Sf-k6-NAN"/>
+                        <outlet property="addTextField" destination="Rrg-Bs-bW3" id="W99-gy-7Nl"/>
+                        <outlet property="titleLabel" destination="N93-Bu-SHI" id="N7D-7I-tKs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ghl-uH-Iky" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

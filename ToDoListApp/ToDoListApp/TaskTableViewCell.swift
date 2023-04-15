@@ -18,8 +18,10 @@ class TaskTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        setupTaskLabel()
+    }
+    func setupTaskLabel(){
+        taskLabel.font = .systemFont(ofSize: 23)
     }
     
 }
