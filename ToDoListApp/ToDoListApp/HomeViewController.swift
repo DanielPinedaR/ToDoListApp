@@ -8,12 +8,17 @@
 import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddTaskViewControllerDelegate {
+    func addStatus(status: String) {
+        statusLabel = status
+    }
+    
     func addTask(task: String) {
         arrayTask.append(task)
         taskTableView.reloadData()
     }
     
     
+    var statusLabel: String = ""
     var arrayTask: [String] = []
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskTableView: UITableView!
@@ -38,6 +43,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
         cell.taskLabel.text = arrayTask[indexPath.row]
+        cell.statusLabel.text = statusLabel
         return cell
     }
 
