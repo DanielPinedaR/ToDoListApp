@@ -77,25 +77,66 @@
             </objects>
             <point key="canvasLocation" x="311" y="50"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="DkL-oH-xcV">
             <objects>
-                <viewController id="Ofk-O7-fal" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="Ofk-O7-fal" customClass="DetailViewController" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KEA-wA-uem">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRT-nx-1eu">
-                                <rect key="frame" x="174" y="94" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tarea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRT-nx-1eu">
+                                <rect key="frame" x="174" y="77" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZh-c2-WqE">
+                                <rect key="frame" x="20" y="138" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripción" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ho0-HB-UGD">
+                                <rect key="frame" x="20" y="199" width="350" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="SfL-tO-2vl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CQn-CW-oa4">
+                                <rect key="frame" x="20" y="319" width="203" height="32"/>
+                                <segments>
+                                    <segment title="no terminado"/>
+                                    <segment title="terminado"/>
+                                </segments>
+                                <connections>
+                                    <action selector="finishControlAction:" destination="Ofk-O7-fal" eventType="valueChanged" id="pZq-Ry-qZc"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="giZ-cY-h2c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lRT-nx-1eu" firstAttribute="centerX" secondItem="KEA-wA-uem" secondAttribute="centerX" id="25a-N0-iYE"/>
+                            <constraint firstItem="CQn-CW-oa4" firstAttribute="leading" secondItem="giZ-cY-h2c" secondAttribute="leading" constant="20" id="BbU-EN-DUf"/>
+                            <constraint firstItem="fZh-c2-WqE" firstAttribute="leading" secondItem="giZ-cY-h2c" secondAttribute="leading" constant="20" id="Cs5-R0-wni"/>
+                            <constraint firstItem="fZh-c2-WqE" firstAttribute="top" secondItem="lRT-nx-1eu" secondAttribute="bottom" constant="40" id="P6U-FF-6CG"/>
+                            <constraint firstItem="CQn-CW-oa4" firstAttribute="top" secondItem="ho0-HB-UGD" secondAttribute="bottom" constant="40" id="TmW-2I-DZX"/>
+                            <constraint firstItem="lRT-nx-1eu" firstAttribute="top" secondItem="giZ-cY-h2c" secondAttribute="top" constant="30" id="aoy-18-Sdx"/>
+                            <constraint firstItem="giZ-cY-h2c" firstAttribute="trailing" secondItem="ho0-HB-UGD" secondAttribute="trailing" constant="20" id="hiT-2J-qdO"/>
+                            <constraint firstItem="ho0-HB-UGD" firstAttribute="leading" secondItem="giZ-cY-h2c" secondAttribute="leading" constant="20" id="ifn-tP-hOe"/>
+                            <constraint firstItem="ho0-HB-UGD" firstAttribute="top" secondItem="fZh-c2-WqE" secondAttribute="bottom" constant="40" id="yRm-Zb-ICS"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="detailDescriptionTask" destination="ho0-HB-UGD" id="Bsr-ct-Z9j"/>
+                        <outlet property="detailTitleLabel" destination="lRT-nx-1eu" id="672-xe-000"/>
+                        <outlet property="detailTitleTask" destination="fZh-c2-WqE" id="I7Y-Vy-DjP"/>
+                        <outlet property="finishControl" destination="CQn-CW-oa4" id="OP9-ZA-Eoq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kK7-D2-viv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

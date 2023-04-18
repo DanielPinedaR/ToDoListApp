@@ -8,16 +8,16 @@
 import UIKit
 
 protocol AddTaskViewControllerDelegate: AnyObject {
-    func addTask(task: String)
+    func addTitleTask(task: String)
+    func addDescriptionTask(description: String)
     func addStatus(status: String)
 }
 
 class AddTaskViewController: UIViewController {
+    var statusValue: String = ""
     @IBOutlet weak var titleViewLabel: UILabel!
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addTitleTextField: UITextField!
-    
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var addDescriptionTextField: UITextField!
     @IBOutlet weak var statusLabel: UILabel!
@@ -51,13 +51,14 @@ class AddTaskViewController: UIViewController {
         pendingTaskButton.setTitleColor(.white, for: .normal)
         lateTaskButton.backgroundColor = .white
         lateTaskButton.setTitleColor(.systemBlue, for: .normal)
-        statusLabel.text = "Pendiente"
+        statusValue = "Pendiente"
     }
     @IBAction func lateTaskButtonAction(_ sender: Any) {
         lateTaskButton.backgroundColor = .systemOrange
         lateTaskButton.setTitleColor(.white, for: .normal)
         pendingTaskButton.backgroundColor = .white
         pendingTaskButton.setTitleColor(.systemBlue, for: .normal)
+        statusValue = "Atrasado"
 
     }
     
@@ -68,9 +69,10 @@ class AddTaskViewController: UIViewController {
             present(alerta, animated: true, completion: nil)
         }
         else {
-            delegate?.addTask(task: addTitleTextField.text ?? "")
+            delegate?.addTitleTask(task: addTitleTextField.text ?? "")
+            delegate?.addDescriptionTask(description: addDescriptionTextField.text ?? "")
+            delegate?.addStatus(status: statusValue)
             self.dismiss(animated: true)
-            delegate?.addStatus(status: statusLabel.text ?? "")
         }
     }
 }

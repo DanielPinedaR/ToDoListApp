@@ -7,19 +7,25 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddTaskViewControllerDelegate {
-    func addStatus(status: String) {
-        statusLabel = status
-    }
-    
-    func addTask(task: String) {
-        arrayTask.append(task)
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddTaskViewControllerDelegate, DetailViewControllerDelegate {
+    func addDescriptionTask(description: String) {
+        arrayDescriptionTask.append(description)
         taskTableView.reloadData()
     }
     
+    func addStatus(status: String) {
+        statusLabel.append(status)
+        taskTableView.reloadData()
+    }
     
-    var statusLabel: String = ""
-    var arrayTask: [String] = []
+    func addTitleTask(task: String) {
+        arrayTitleTask.append(task)
+        taskTableView.reloadData()
+    }
+    
+    var statusLabel: [String] = []
+    var arrayTitleTask: [String] = []
+    var arrayDescriptionTask: [String] = []
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taskTableView: UITableView!
     @IBOutlet weak var addTaskButton: UIButton!
@@ -36,14 +42,26 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         taskTableView.dataSource = self
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            vc.delegate = self
+            self.navigationController?.present(vc, animated: true)
+            vc.detailTitleLabel.text = statusLabel[indexPath.row]
+            vc.detailTitleTask.text = arrayTitleTask[indexPath.row]
+            vc.detailDescriptionTask.text = arrayDescriptionTask[indexPath.row]
+        }
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        arrayTask.count
+        arrayTitleTask.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
-        cell.taskLabel.text = arrayTask[indexPath.row]
-        cell.statusLabel.text = statusLabel
+        cell.taskLabel.text = arrayTitleTask[indexPath.row]
+        cell.statusLabel.text = statusLabel[indexPath.row]
         return cell
     }
 
