@@ -8,9 +8,7 @@
 import UIKit
 
 protocol AddTaskViewControllerDelegate: AnyObject {
-    func addTitleTask(task: String)
-    func addDescriptionTask(description: String)
-    func addStatus(status: String)
+    func addTask(task: Task)
 }
 
 class AddTaskViewController: UIViewController {
@@ -68,10 +66,25 @@ class AddTaskViewController: UIViewController {
             alerta.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alerta, animated: true, completion: nil)
         }
+        else if statusValue == "Pendiente" {
+            delegate?.addTask(
+                task: Task(
+                    title: addTitleTextField.text ?? "",
+                    description: addDescriptionTextField.text ?? "",
+                    status: .pending
+                )
+            )
+            self.dismiss(animated: true)
+        }
+        
         else {
-            delegate?.addTitleTask(task: addTitleTextField.text ?? "")
-            delegate?.addDescriptionTask(description: addDescriptionTextField.text ?? "")
-            delegate?.addStatus(status: statusValue)
+            delegate?.addTask(
+                task: Task(
+                    title: addTitleTextField.text ?? "",
+                    description: addDescriptionTextField.text ?? "",
+                    status: .late
+                )
+            )
             self.dismiss(animated: true)
         }
     }

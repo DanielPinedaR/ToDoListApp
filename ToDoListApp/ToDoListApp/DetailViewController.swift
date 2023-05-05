@@ -7,19 +7,35 @@
 
 import UIKit
 protocol DetailViewControllerDelegate: AnyObject {
+    func addFinishStatus(status: String)
+    func removeFinishStatus()
 }
 class DetailViewController: UIViewController {
-
+    
+    var task: Task? = nil
+    
     @IBOutlet weak var detailTitleLabel: UILabel!
     @IBOutlet weak var detailTitleTask: UILabel!
     @IBOutlet weak var detailDescriptionTask: UILabel!
     @IBOutlet weak var finishControl: UISegmentedControl!
     
     weak var delegate: DetailViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    @IBAction func finishControlAction(_ sender: Any) {
+        setupTitleTask()
     }
     
+    func setupTitleTask(){
+        detailTitleTask.text = task?.title
+    }
+    
+    @IBAction func finishControlAction(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 1 {
+            delegate?.addFinishStatus(status: "Finalizado")
+        }
+        else {
+            delegate?.removeFinishStatus()
+        }
+    }
 }

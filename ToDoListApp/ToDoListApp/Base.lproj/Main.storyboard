@@ -35,13 +35,15 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Kd-Xb-UYu">
-                                <rect key="frame" x="270" y="724" width="80" height="80"/>
+                                <rect key="frame" x="280" y="704" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="HqK-sh-IZS"/>
                                     <constraint firstAttribute="width" constant="80" id="ZrF-3F-duT"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="40"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="addTaskButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dmI-5Q-5Zc"/>
                                 </connections>
@@ -57,9 +59,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="L9v-1c-drk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="2bF-TC-wsO"/>
-                            <constraint firstAttribute="bottom" secondItem="5Kd-Xb-UYu" secondAttribute="bottom" constant="40" id="MuH-su-k70"/>
+                            <constraint firstAttribute="bottom" secondItem="5Kd-Xb-UYu" secondAttribute="bottom" constant="60" id="MuH-su-k70"/>
                             <constraint firstItem="OWH-av-ETg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="70" id="Ndm-cE-AbZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Kd-Xb-UYu" secondAttribute="trailing" constant="40" id="aom-PH-kun"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Kd-Xb-UYu" secondAttribute="trailing" constant="30" id="aom-PH-kun"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="L9v-1c-drk" secondAttribute="bottom" constant="10" id="m1G-oL-PGJ"/>
                             <constraint firstItem="OWH-av-ETg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mLG-uk-dhK"/>
                             <constraint firstItem="L9v-1c-drk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qV3-i1-czd"/>
@@ -113,7 +115,7 @@
                                     <segment title="terminado"/>
                                 </segments>
                                 <connections>
-                                    <action selector="finishControlAction:" destination="Ofk-O7-fal" eventType="valueChanged" id="pZq-Ry-qZc"/>
+                                    <action selector="finishControlAction:" destination="Ofk-O7-fal" eventType="valueChanged" id="aga-zP-p7h"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
@@ -141,6 +143,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kK7-D2-viv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="311" y="761"/>
+        </scene>
+        <!--Finished View Controller-->
+        <scene sceneID="lRp-rc-DkL">
+            <objects>
+                <viewController id="Wft-OS-HhR" customClass="FinishedViewController" customModule="ToDoListApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hba-r3-h2N">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tareas terminadas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qak-8O-oqr">
+                                <rect key="frame" x="125" y="77" width="140" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5SD-zL-5h0">
+                                <rect key="frame" x="20" y="138" width="350" height="652"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SE3-Za-DtM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SE3-Za-DtM" firstAttribute="bottom" secondItem="5SD-zL-5h0" secondAttribute="bottom" constant="20" id="4HZ-dy-rSZ"/>
+                            <constraint firstItem="qak-8O-oqr" firstAttribute="centerX" secondItem="Hba-r3-h2N" secondAttribute="centerX" id="Cx7-vR-fL3"/>
+                            <constraint firstItem="qak-8O-oqr" firstAttribute="top" secondItem="SE3-Za-DtM" secondAttribute="top" constant="30" id="Nai-sA-Kvw"/>
+                            <constraint firstItem="5SD-zL-5h0" firstAttribute="leading" secondItem="SE3-Za-DtM" secondAttribute="leading" constant="20" id="aHB-IT-IsT"/>
+                            <constraint firstItem="SE3-Za-DtM" firstAttribute="trailing" secondItem="5SD-zL-5h0" secondAttribute="trailing" constant="20" id="jOa-eP-XLO"/>
+                            <constraint firstItem="5SD-zL-5h0" firstAttribute="top" secondItem="qak-8O-oqr" secondAttribute="bottom" constant="40" id="zeq-7j-LMg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="taskFinishedTable" destination="5SD-zL-5h0" id="EvW-Bw-MUK"/>
+                        <outlet property="titleLabel" destination="qak-8O-oqr" id="733-yZ-obt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kwj-36-BQ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1380" y="761"/>
         </scene>
         <!--Add Task View Controller-->
         <scene sceneID="X0N-VO-r9I">
@@ -283,6 +324,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
