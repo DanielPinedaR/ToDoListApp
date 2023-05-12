@@ -29,13 +29,13 @@ class FinishedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        TasksManager.shared.tasks.count
+        TasksManager.shared.completedTasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
-            cell.taskLabel.text = TasksManager.shared.tasks[indexPath.row].title
-            cell.statusLabel.text = TasksManager.shared.tasks[indexPath.row].status.rawValue
+            cell.taskLabel.text = TasksManager.shared.completedTasks[indexPath.row].title
+            cell.statusLabel.text = TasksManager.shared.completedTasks[indexPath.row].status.rawValue
             return cell
     }
     
