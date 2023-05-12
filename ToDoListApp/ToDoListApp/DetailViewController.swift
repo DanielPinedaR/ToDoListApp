@@ -24,6 +24,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitleTask()
+        finishControl.selectedSegmentIndex = task?.status == .finish ? 1 : 0
     }
     
     func setupTitleTask(){
@@ -34,8 +35,14 @@ class DetailViewController: UIViewController {
     
     @IBAction func finishControlAction(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 1 {
+            guard let task else { return }
+            task.status = .finish
+            TasksManager.shared.updateTask(id: task.id, task: task)
         }
         else {
+            guard let task else { return }
+            task.status = .pending
+            TasksManager.shared.updateTask(id: task.id, task: task)
         }
     }
 }

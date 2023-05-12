@@ -20,7 +20,9 @@ class TasksManager {
     }
     
     func updateTask(id: UUID, task: Task) {
-        tasks.filter { $0.id == id }
+        if let index = tasks.firstIndex(where: { $0.id == id }) {
+            tasks[index] = task
+        }
     }
     
     func getPendingTasks() -> [Task] {
