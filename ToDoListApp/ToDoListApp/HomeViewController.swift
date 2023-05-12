@@ -8,6 +8,7 @@
 import UIKit
 
 enum TaskStatus: String {
+    case finish = "finalizado"
     case pending = "pendiente"
     case late = "atrasado"
 }
@@ -27,11 +28,9 @@ class Task {
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var finishTaskButton: UIButton!
     @IBOutlet weak var taskTableView: UITableView!
     @IBOutlet weak var addTaskButton: UIButton!
-    
-    var indice: Int = 0
-    var tasks = [Task]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,24 +52,22 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        return TasksManager.shared.tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
-        cell.taskLabel.text = tasks[indexPath.row].title
-        cell.statusLabel.text = tasks[indexPath.row].status.rawValue
+        cell.taskLabel.text = TasksManager.shared.tasks[indexPath.row].title
+        cell.statusLabel.text = TasksManager.shared.tasks[indexPath.row].status.rawValue
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        indice = indexPath.row
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
             vc.delegate = self
-            vc.task = tasks[indexPath.row]
+            vc.task = TasksManager.shared.tasks[indexPath.row]
             self.navigationController?.present(vc, animated: true)
-//            vc.task = Task(title: tasks[indexPath.row].title, description: tasks[indexPath.row].description, status: tasks[indexPath.row].status)
             
         }
         
@@ -83,11 +80,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.navigationController?.present(vc, animated: true)
         }
     }
+    
+    @IBAction func finishTaskButtonAction(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "FinishedViewController") as? FinishedViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
 extension HomeViewController: AddTaskViewControllerDelegate {
-    func addTask(task: Task) {
-        tasks.append(task)
+    func finishFlow() {
         taskTableView.reloadData()
     }
 }

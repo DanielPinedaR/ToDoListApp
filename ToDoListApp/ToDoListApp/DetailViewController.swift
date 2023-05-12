@@ -27,7 +27,9 @@ class DetailViewController: UIViewController {
     }
     
     func setupTitleTask(){
+        detailTitleLabel.text = task?.status.rawValue
         detailTitleTask.text = task?.title
+        detailDescriptionTask.text = task?.description
     }
     
     @IBAction func finishControlAction(_ sender: UISegmentedControl) {

@@ -18,6 +18,7 @@
 		6B2F414829E9CC110087100D /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2F414729E9CC110087100D /* AddTaskViewController.swift */; };
 		6B375C0029FD8E0100C6DDC6 /* FinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B375BFF29FD8E0100C6DDC6 /* FinishedViewController.swift */; };
 		6B88E0D329EF0CA7009FC59C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88E0D229EF0CA7009FC59C /* DetailViewController.swift */; };
+		6BE06FE22A0D59850071AA01 /* TasksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE06FE12A0D59850071AA01 /* TasksManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		6B2F414729E9CC110087100D /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		6B375BFF29FD8E0100C6DDC6 /* FinishedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedViewController.swift; sourceTree = "<group>"; };
 		6B88E0D229EF0CA7009FC59C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		6BE06FE12A0D59850071AA01 /* TasksManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				6B2F414729E9CC110087100D /* AddTaskViewController.swift */,
 				6B88E0D229EF0CA7009FC59C /* DetailViewController.swift */,
 				6B375BFF29FD8E0100C6DDC6 /* FinishedViewController.swift */,
+				6BE06FE12A0D59850071AA01 /* TasksManager.swift */,
 			);
 			path = ToDoListApp;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				6B2F412E29E9ADA30087100D /* AppDelegate.swift in Sources */,
 				6B88E0D329EF0CA7009FC59C /* DetailViewController.swift in Sources */,
 				6B2F413029E9ADA30087100D /* SceneDelegate.swift in Sources */,
+				6BE06FE22A0D59850071AA01 /* TasksManager.swift in Sources */,
 				6B2F414829E9CC110087100D /* AddTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

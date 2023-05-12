@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddTaskViewControllerDelegate: AnyObject {
-    func addTask(task: Task)
+    func finishFlow()
 }
 
 class AddTaskViewController: UIViewController {
@@ -67,24 +67,36 @@ class AddTaskViewController: UIViewController {
             present(alerta, animated: true, completion: nil)
         }
         else if statusValue == "Pendiente" {
-            delegate?.addTask(
-                task: Task(
-                    title: addTitleTextField.text ?? "",
-                    description: addDescriptionTextField.text ?? "",
-                    status: .pending
-                )
-            )
+            TasksManager.shared.addTask(task: Task(
+                                    title: addTitleTextField.text ?? "",
+                                    description: addDescriptionTextField.text ?? "",
+                                    status: .pending
+                                ))
+            delegate?.finishFlow()
+//            delegate?.addTask(
+//                task: Task(
+//                    title: addTitleTextField.text ?? "",
+//                    description: addDescriptionTextField.text ?? "",
+//                    status: .pending
+//                )
+//            )
             self.dismiss(animated: true)
         }
         
         else {
-            delegate?.addTask(
-                task: Task(
-                    title: addTitleTextField.text ?? "",
-                    description: addDescriptionTextField.text ?? "",
-                    status: .late
-                )
-            )
+            TasksManager.shared.addTask(task: Task(
+                                    title: addTitleTextField.text ?? "",
+                                    description: addDescriptionTextField.text ?? "",
+                                    status: .late
+                                ))
+            delegate?.finishFlow()
+//            delegate?.addTask(
+//                task: Task(
+//                    title: addTitleTextField.text ?? "",
+//                    description: addDescriptionTextField.text ?? "",
+//                    status: .late
+//                )
+//            )
             self.dismiss(animated: true)
         }
     }
