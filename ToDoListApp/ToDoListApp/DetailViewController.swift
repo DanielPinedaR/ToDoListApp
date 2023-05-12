@@ -34,10 +34,8 @@ class DetailViewController: UIViewController {
     
     @IBAction func finishControlAction(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 1 {
-            delegate?.addFinishStatus(status: "Finalizado")
         }
         else {
-            delegate?.removeFinishStatus()
         }
     }
 }

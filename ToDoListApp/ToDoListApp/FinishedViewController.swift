@@ -7,14 +7,36 @@
 
 import UIKit
 
-class FinishedViewController: UIViewController {
-
+class FinishedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var taskFinishedTable: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
         // Do any additional setup after loading the view.
+    }
+    
+    func setupUI(){
+        setupTableView()
+    }
+    
+    func setupTableView(){
+        let nib = UINib(nibName: "TaskTableViewCell", bundle: nil)
+        taskFinishedTable.register(nib, forCellReuseIdentifier: "TaskTableViewCell")
+        taskFinishedTable.delegate = self
+        taskFinishedTable.dataSource = self
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        TasksManager.shared.tasks.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
+            cell.taskLabel.text = TasksManager.shared.tasks[indexPath.row].title
+            cell.statusLabel.text = TasksManager.shared.tasks[indexPath.row].status.rawValue
+            return cell
     }
     
 }

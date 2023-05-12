@@ -14,11 +14,13 @@ enum TaskStatus: String {
 }
 
 class Task {
+    var id: UUID
     var title: String
     var description: String
     var status: TaskStatus
     
-    init(title: String, description: String, status: TaskStatus) {
+    init(id: UUID = UUID(), title: String, description: String, status: TaskStatus) {
+        self.id = id
         self.title = title
         self.description = description
         self.status = status
