@@ -13,7 +13,7 @@ class TasksManager {
     
     var tasks: [Task] = [
         Task(title: "Title1", description: "Desc", status: .pending),
-        Task(title: "Title2", description: "Desc", status: .pending),
+        Task(title: "Title2", description: "Desc", status: .finish),
         Task(title: "Title3", description: "Desc", status: .pending),
     ]
     

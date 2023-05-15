@@ -39,6 +39,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
         setupUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+        taskTableView.reloadData()
+    }
+    
     func setupUI(){
         setupTableView()
         setupButton()
@@ -54,13 +60,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TasksManager.shared.tasks.count
+        return TasksManager.shared.pendingTasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
-        cell.taskLabel.text = TasksManager.shared.tasks[indexPath.row].title
-        cell.statusLabel.text = TasksManager.shared.tasks[indexPath.row].status.rawValue
+        cell.taskLabel.text = TasksManager.shared.pendingTasks[indexPath.row].title
+        cell.statusLabel.text = TasksManager.shared.pendingTasks[indexPath.row].status.rawValue
         return cell
     }
     
@@ -68,7 +74,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
             vc.delegate = self
-            vc.task = TasksManager.shared.tasks[indexPath.row]
+            vc.task = TasksManager.shared.pendingTasks[indexPath.row]
             self.navigationController?.present(vc, animated: true)
             
         }

@@ -38,6 +38,7 @@ class DetailViewController: UIViewController {
             guard let task else { return }
             task.status = .finish
             TasksManager.shared.updateTask(id: task.id, task: task)
+
         }
         else {
             guard let task else { return }
