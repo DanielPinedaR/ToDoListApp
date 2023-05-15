@@ -6,9 +6,9 @@
 //
 
 import UIKit
+
 protocol DetailViewControllerDelegate: AnyObject {
-    func addFinishStatus(status: String)
-    func removeFinishStatus()
+    func saveTableView()
 }
 class DetailViewController: UIViewController {
     
@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailTitleLabel: UILabel!
     @IBOutlet weak var detailTitleTask: UILabel!
     @IBOutlet weak var detailDescriptionTask: UILabel!
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var finishControl: UISegmentedControl!
     
     weak var delegate: DetailViewControllerDelegate?
@@ -45,5 +46,9 @@ class DetailViewController: UIViewController {
             task.status = .pending
             TasksManager.shared.updateTask(id: task.id, task: task)
         }
+    }
+    @IBAction func saveButtonAction(_ sender: Any) {
+        delegate?.saveTableView()
+        self.dismiss(animated: true)
     }
 }

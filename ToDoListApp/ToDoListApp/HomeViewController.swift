@@ -18,12 +18,14 @@ class Task {
     var title: String
     var description: String
     var status: TaskStatus
+    var date: Date
     
-    init(id: UUID = UUID(), title: String, description: String, status: TaskStatus) {
+    init(id: UUID = UUID(), title: String, description: String, status: TaskStatus, date: Date) {
         self.id = id
         self.title = title
         self.description = description
         self.status = status
+        self.date = date
     }
 }
 
@@ -104,10 +106,8 @@ extension HomeViewController: AddTaskViewControllerDelegate {
 }
 
 extension HomeViewController: DetailViewControllerDelegate {
-    func addFinishStatus(status: String) {
-    }
-    
-    func removeFinishStatus() {
+    func saveTableView() {
+        taskTableView.reloadData()
     }
 }
 

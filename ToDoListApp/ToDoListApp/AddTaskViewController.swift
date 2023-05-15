@@ -12,6 +12,7 @@ protocol AddTaskViewControllerDelegate: AnyObject {
 }
 
 class AddTaskViewController: UIViewController {
+    let datePicker = UIDatePicker()
     var statusValue: String = ""
     @IBOutlet weak var titleViewLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -21,6 +22,8 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var pendingTaskButton: UIButton!
     @IBOutlet weak var lateTaskButton: UIButton!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
     
     weak var delegate: AddTaskViewControllerDelegate?
@@ -28,6 +31,7 @@ class AddTaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTextField()
+        setupDateField()
         setupButton()
     }
     func setupTextField(){
@@ -42,6 +46,10 @@ class AddTaskViewController: UIViewController {
         lateTaskButton.layer.borderWidth = 0.5
         lateTaskButton.titleLabel?.font = .systemFont(ofSize: 20)
         addButton.titleLabel?.font = .systemFont(ofSize: 25)
+    }
+    
+    func setupDateField(){
+        createDatePicker()
     }
 
     @IBAction func pendingTaskButtonAction(_ sender: Any) {
@@ -70,16 +78,10 @@ class AddTaskViewController: UIViewController {
             TasksManager.shared.addTask(task: Task(
                                     title: addTitleTextField.text ?? "",
                                     description: addDescriptionTextField.text ?? "",
-                                    status: .pending
+                                    status: .pending,
+                                    date: datePicker.date
                                 ))
             delegate?.finishFlow()
-//            delegate?.addTask(
-//                task: Task(
-//                    title: addTitleTextField.text ?? "",
-//                    description: addDescriptionTextField.text ?? "",
-//                    status: .pending
-//                )
-//            )
             self.dismiss(animated: true)
         }
         
@@ -87,17 +89,36 @@ class AddTaskViewController: UIViewController {
             TasksManager.shared.addTask(task: Task(
                                     title: addTitleTextField.text ?? "",
                                     description: addDescriptionTextField.text ?? "",
-                                    status: .late
+                                    status: .late,
+                                    date: datePicker.date
                                 ))
             delegate?.finishFlow()
-//            delegate?.addTask(
-//                task: Task(
-//                    title: addTitleTextField.text ?? "",
-//                    description: addDescriptionTextField.text ?? "",
-//                    status: .late
-//                )
-//            )
             self.dismiss(animated: true)
         }
+    }
+    
+    func createToolBar() -> UIToolbar{
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolBar.setItems([doneBtn], animated: true)
+        
+        return toolBar
+    }
+    
+    func createDatePicker(){
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.datePickerMode = .date
+        dateTextField.inputView = datePicker
+        dateTextField.inputAccessoryView = createToolBar()
+    }
+    
+    @objc func donePressed(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        self.dateTextField.text = dateFormatter.string(from: datePicker.date)
+        self.view.endEditing(true)
     }
 }
