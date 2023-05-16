@@ -20,8 +20,6 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var addDescriptionTextField: UITextField!
     @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var pendingTaskButton: UIButton!
-    @IBOutlet weak var lateTaskButton: UIButton!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var addButton: UIButton!
@@ -30,60 +28,26 @@ class AddTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    func setupUI(){
         setupTextField()
         setupDateField()
         setupButton()
     }
+    
     func setupTextField(){
         addTitleTextField.contentVerticalAlignment = .top
         addDescriptionTextField.contentVerticalAlignment = .top
     }
+    
     func setupButton(){
-        pendingTaskButton.layer.cornerRadius = 10
-        pendingTaskButton.layer.borderWidth = 0.5
-        pendingTaskButton.titleLabel?.font = .systemFont(ofSize: 20)
-        lateTaskButton.layer.cornerRadius = 10
-        lateTaskButton.layer.borderWidth = 0.5
-        lateTaskButton.titleLabel?.font = .systemFont(ofSize: 20)
         addButton.titleLabel?.font = .systemFont(ofSize: 25)
     }
     
     func setupDateField(){
         createDatePicker()
-    }
-
-    @IBAction func pendingTaskButtonAction(_ sender: Any) {
-        pendingTaskButton.backgroundColor = .systemOrange
-        pendingTaskButton.setTitleColor(.white, for: .normal)
-        lateTaskButton.backgroundColor = .white
-        lateTaskButton.setTitleColor(.systemBlue, for: .normal)
-        statusValue = "Pendiente"
-    }
-    @IBAction func lateTaskButtonAction(_ sender: Any) {
-        lateTaskButton.backgroundColor = .systemOrange
-        lateTaskButton.setTitleColor(.white, for: .normal)
-        pendingTaskButton.backgroundColor = .white
-        pendingTaskButton.setTitleColor(.systemBlue, for: .normal)
-        statusValue = "Atrasado"
-
-    }
-    
-    @IBAction func addButtonAction(_ sender: Any) {
-        if addTitleTextField.text == "" {
-            let alerta = UIAlertController(title: "Error", message: "Se necesita agregar un título", preferredStyle: .alert)
-            alerta.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alerta, animated: true, completion: nil)
-        }
-        else {
-            TasksManager.shared.addTask(task: Task(
-                                    title: addTitleTextField.text ?? "",
-                                    description: addDescriptionTextField.text ?? "",
-                                    status: .pending,
-                                    date: datePicker.date
-                                ))
-            delegate?.finishFlow()
-            self.dismiss(animated: true)
-        }
     }
     
     func createToolBar() -> UIToolbar{
@@ -108,6 +72,25 @@ class AddTaskViewController: UIViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         self.dateTextField.text = dateFormatter.string(from: datePicker.date)
+        dateTextField.textAlignment = .center
         self.view.endEditing(true)
+    }
+    
+    @IBAction func addButtonAction(_ sender: Any) {
+        if addTitleTextField.text == "" {
+            let alerta = UIAlertController(title: "Error", message: "Se necesita agregar un título", preferredStyle: .alert)
+            alerta.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alerta, animated: true, completion: nil)
+        }
+        else {
+            TasksManager.shared.addTask(task: Task(
+                                    title: addTitleTextField.text ?? "",
+                                    description: addDescriptionTextField.text ?? "",
+                                    status: .pending,
+                                    date: datePicker.date
+                                ))
+            delegate?.finishFlow()
+            self.dismiss(animated: true)
+        }
     }
 }

@@ -8,8 +8,8 @@
 import UIKit
 
 enum TaskStatus: String {
-    case finish = "finalizado"
-    case pending = "pendiente"
+    case finish = "Finalizado"
+    case pending = "Pendiente"
 }
 
 class Task {
@@ -25,6 +25,10 @@ class Task {
         self.description = description
         self.status = status
         self.date = date
+    }
+    
+    var isLate: Bool {
+        return date < Date.now
     }
 }
 
@@ -67,7 +71,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
         cell.taskLabel.text = TasksManager.shared.pendingTasks[indexPath.row].title
-        cell.statusLabel.text = TasksManager.shared.pendingTasks[indexPath.row].status.rawValue
+        if TasksManager.shared.pendingTasks[indexPath.row].isLate {
+            cell.statusLabel.text = "Atrasado"
+        } else {
+            cell.statusLabel.text = TasksManager.shared.pendingTasks[indexPath.row].status.rawValue
+        }
+        
         return cell
     }
     
