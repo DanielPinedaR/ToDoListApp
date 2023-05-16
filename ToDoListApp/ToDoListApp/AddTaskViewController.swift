@@ -74,22 +74,11 @@ class AddTaskViewController: UIViewController {
             alerta.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alerta, animated: true, completion: nil)
         }
-        else if statusValue == "Pendiente" {
-            TasksManager.shared.addTask(task: Task(
-                                    title: addTitleTextField.text ?? "",
-                                    description: addDescriptionTextField.text ?? "",
-                                    status: .pending,
-                                    date: datePicker.date
-                                ))
-            delegate?.finishFlow()
-            self.dismiss(animated: true)
-        }
-        
         else {
             TasksManager.shared.addTask(task: Task(
                                     title: addTitleTextField.text ?? "",
                                     description: addDescriptionTextField.text ?? "",
-                                    status: .late,
+                                    status: .pending,
                                     date: datePicker.date
                                 ))
             delegate?.finishFlow()

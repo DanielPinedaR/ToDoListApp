@@ -12,9 +12,9 @@ class TasksManager {
     static let shared = TasksManager()
     
     var tasks: [Task] = [
-        Task(title: "Title1", description: "Desc", status: .pending),
-        Task(title: "Title2", description: "Desc", status: .finish),
-        Task(title: "Title3", description: "Desc", status: .pending),
+        Task(title: "Title1", description: "Desc", status: .pending, date: .now),
+        Task(title: "Title2", description: "Desc", status: .finish, date: .now),
+        Task(title: "Title3", description: "Desc", status: .pending, date: .now),
     ]
     
     var completedTasks: [Task] {

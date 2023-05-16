@@ -35,19 +35,12 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func finishControlAction(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 1 {
-            guard let task else { return }
-            task.status = .finish
-            TasksManager.shared.updateTask(id: task.id, task: task)
-
-        }
-        else {
-            guard let task else { return }
-            task.status = .pending
-            TasksManager.shared.updateTask(id: task.id, task: task)
-        }
     }
+    
     @IBAction func saveButtonAction(_ sender: Any) {
+        guard let task else { return }
+        task.status = (finishControl.selectedSegmentIndex == 1) ? .finish : .pending
+        TasksManager.shared.updateTask(id: task.id, task: task)
         delegate?.saveTableView()
         self.dismiss(animated: true)
     }

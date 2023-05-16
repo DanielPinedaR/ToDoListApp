@@ -10,7 +10,6 @@ import UIKit
 enum TaskStatus: String {
     case finish = "finalizado"
     case pending = "pendiente"
-    case late = "atrasado"
 }
 
 class Task {
