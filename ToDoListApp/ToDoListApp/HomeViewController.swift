@@ -17,9 +17,9 @@ class Task {
     var title: String
     var description: String
     var status: TaskStatus
-    var date: Date
+    var date: Date?
     
-    init(id: UUID = UUID(), title: String, description: String, status: TaskStatus, date: Date) {
+    init(id: UUID = UUID(), title: String, description: String, status: TaskStatus, date: Date?) {
         self.id = id
         self.title = title
         self.description = description
@@ -28,7 +28,11 @@ class Task {
     }
     
     var isLate: Bool {
-        return date < Date.now
+        if let date {
+            return date  < Date.now
+        } else {
+            return false
+        }
     }
 }
 

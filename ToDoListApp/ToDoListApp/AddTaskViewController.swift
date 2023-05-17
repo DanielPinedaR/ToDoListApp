@@ -83,11 +83,12 @@ class AddTaskViewController: UIViewController {
             present(alerta, animated: true, completion: nil)
         }
         else {
+            let date = dateTextField.text == "" ? nil : datePicker.date
             TasksManager.shared.addTask(task: Task(
                                     title: addTitleTextField.text ?? "",
                                     description: addDescriptionTextField.text ?? "",
                                     status: .pending,
-                                    date: datePicker.date
+                                    date: date
                                 ))
             delegate?.finishFlow()
             self.dismiss(animated: true)
