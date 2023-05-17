@@ -102,19 +102,19 @@
                                 <rect key="frame" x="93.666666666666686" y="87" width="203" height="423"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tarea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRT-nx-1eu">
-                                        <rect key="frame" x="80.666666666666671" y="0.0" width="41.666666666666671" height="20.333333333333332"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="73.333333333333329" y="0.0" width="55.999999999999986" height="28.666666666666668"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZh-c2-WqE">
-                                        <rect key="frame" x="79.999999999999986" y="97" width="42.666666666666671" height="20.333333333333329"/>
+                                        <rect key="frame" x="79.999999999999986" y="100" width="42.666666666666671" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descripción" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ho0-HB-UGD">
-                                        <rect key="frame" x="55.999999999999979" y="164" width="90.666666666666686" height="80"/>
+                                        <rect key="frame" x="55.999999999999979" y="166.33333333333334" width="90.666666666666686" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="SfL-tO-2vl"/>
                                         </constraints>
@@ -123,9 +123,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CQn-CW-oa4">
-                                        <rect key="frame" x="0.0" y="251" width="203" height="101"/>
+                                        <rect key="frame" x="0.0" y="287" width="203" height="31"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="m71-Sp-PLr"/>
+                                            <constraint firstAttribute="height" constant="30" id="m71-Sp-PLr"/>
                                         </constraints>
                                         <segments>
                                             <segment title="no terminado"/>

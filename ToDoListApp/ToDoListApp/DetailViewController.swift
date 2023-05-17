@@ -30,6 +30,7 @@ class DetailViewController: UIViewController {
     
     func setupTitleTask(){
         detailTitleLabel.text = task?.status.rawValue
+        detailTitleLabel.textColor = UIColor.systemBlue
         detailTitleTask.text = task?.title
         detailDescriptionTask.text = task?.description
         detailDescriptionTask.isHidden = detailDescriptionTask.text == ""
