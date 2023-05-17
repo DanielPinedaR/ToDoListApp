@@ -32,6 +32,7 @@ class DetailViewController: UIViewController {
         detailTitleLabel.text = task?.status.rawValue
         detailTitleTask.text = task?.title
         detailDescriptionTask.text = task?.description
+        detailDescriptionTask.isHidden = detailDescriptionTask.text == ""
     }
     
     @IBAction func finishControlAction(_ sender: UISegmentedControl) {
