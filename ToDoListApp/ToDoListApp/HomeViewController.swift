@@ -58,41 +58,57 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         setupTableView()
         setupButton()
     }
+    
     func setupButton(){
         addTaskButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
     }
+    
     func setupTableView(){
         let nib = UINib(nibName: "TaskTableViewCell", bundle: nil)
         taskTableView.register(nib, forCellReuseIdentifier: "TaskTableViewCell")
         taskTableView.delegate = self
         taskTableView.dataSource = self
+        
+        let nib_2 = UINib(nibName: "EmptyTableViewCell", bundle: nil)
+        taskTableView.register(nib_2, forCellReuseIdentifier: "EmptyTableViewCell")
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TasksManager.shared.pendingTasks.count
+        if TasksManager.shared.pendingTasks.count > 0 {
+            return TasksManager.shared.pendingTasks.count
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
-        cell.taskLabel.text = TasksManager.shared.pendingTasks[indexPath.row].title
-        if TasksManager.shared.pendingTasks[indexPath.row].isLate {
-            cell.statusLabel.text = "Atrasado"
+        if TasksManager.shared.pendingTasks.count > 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath) as! TaskTableViewCell
+            cell.taskLabel.text = TasksManager.shared.pendingTasks[indexPath.row].title
+            if TasksManager.shared.pendingTasks[indexPath.row].isLate {
+                cell.statusLabel.text = "Atrasado"
+            } else {
+                cell.statusLabel.text = TasksManager.shared.pendingTasks[indexPath.row].status.rawValue
+            }
+            
+            return cell
         } else {
-            cell.statusLabel.text = TasksManager.shared.pendingTasks[indexPath.row].status.rawValue
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+            return cell
         }
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-            vc.delegate = self
-            vc.task = TasksManager.shared.pendingTasks[indexPath.row]
-            self.navigationController?.present(vc, animated: true)
-            
-        }
         
+        if TasksManager.shared.pendingTasks.count > 0 {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let vc = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+                vc.delegate = self
+                vc.task = TasksManager.shared.pendingTasks[indexPath.row]
+                self.navigationController?.present(vc, animated: true)
+            }
+        }
     }
 
     @IBAction func addTaskButtonAction(_ sender: Any) {

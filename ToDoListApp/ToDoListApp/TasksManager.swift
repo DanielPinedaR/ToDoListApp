@@ -11,11 +11,7 @@ class TasksManager {
     
     static let shared = TasksManager()
     
-    var tasks: [Task] = [
-        Task(title: "Title1", description: "Desc", status: .pending, date: .now),
-        Task(title: "Title2", description: "Desc", status: .finish, date: .now),
-        Task(title: "Title3", description: "Desc", status: .pending, date: .now),
-    ]
+    var tasks: [Task] = []
     
     var completedTasks: [Task] {
         return tasks.filter { $0.status == .finish }
