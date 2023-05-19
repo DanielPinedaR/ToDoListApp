@@ -52,13 +52,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Realicemos una tarea..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWH-av-ETg">
-                                <rect key="frame" x="49" y="70" width="292" height="31.333333333333329"/>
+                                <rect key="frame" x="49" y="80" width="292" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="26"/>
                                 <color key="textColor" name="quaternaryColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fv4-ls-ap0">
-                                <rect key="frame" x="247" y="116" width="123" height="47"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fv4-ls-ap0">
+                                <rect key="frame" x="255.33333333333334" y="116" width="114.66666666666666" height="37"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" title="Tareas ">
                                     <imageReference key="image" image="checkmark.square.fill" catalog="system" symbolScale="large" variableValue="0.0"/>
@@ -77,8 +77,9 @@
                             <constraint firstItem="L9v-1c-drk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="2bF-TC-wsO"/>
                             <constraint firstItem="fv4-ls-ap0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="JSc-rY-7Vw"/>
                             <constraint firstAttribute="bottom" secondItem="5Kd-Xb-UYu" secondAttribute="bottom" constant="60" id="MuH-su-k70"/>
-                            <constraint firstItem="OWH-av-ETg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="70" id="Ndm-cE-AbZ"/>
+                            <constraint firstItem="OWH-av-ETg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="80" id="Ndm-cE-AbZ"/>
                             <constraint firstItem="L9v-1c-drk" firstAttribute="top" secondItem="fv4-ls-ap0" secondAttribute="bottom" constant="20" id="Pxd-fW-PtJ"/>
+                            <constraint firstItem="fv4-ls-ap0" firstAttribute="top" secondItem="OWH-av-ETg" secondAttribute="bottom" constant="15" id="ZxX-n6-JmB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5Kd-Xb-UYu" secondAttribute="trailing" constant="30" id="aom-PH-kun"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="L9v-1c-drk" secondAttribute="bottom" constant="10" id="m1G-oL-PGJ"/>
                             <constraint firstItem="OWH-av-ETg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mLG-uk-dhK"/>
@@ -355,7 +356,7 @@
             <color red="0.40923395550000002" green="0.82137784089999999" blue="0.65399030280000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="quaternaryColor">
-            <color red="0.0" green="0.61176470588235299" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.0" green="0.6119999885559082" blue="0.78799998760223389" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -29,7 +29,7 @@ class Task {
     
     var isLate: Bool {
         if let date {
-            return date  < Date.now
+            return Calendar.current.startOfDay(for: date)  < Calendar.current.startOfDay(for: Date.now) 
         } else {
             return false
         }
@@ -91,10 +91,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else {
                 cell.statusLabel.text = TasksManager.shared.pendingTasks[indexPath.row].status.rawValue
             }
-            
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+            cell.isUserInteractionEnabled = false
             return cell
         }
     }
@@ -136,6 +136,15 @@ extension HomeViewController: AddTaskViewControllerDelegate {
 extension HomeViewController: DetailViewControllerDelegate {
     func saveTableView() {
         taskTableView.reloadData()
+    }
+}
+
+extension UIView {
+    func centerVertically() {
+        if let superview = superview {
+            translatesAutoresizingMaskIntoConstraints = false
+            centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
+        }
     }
 }
 

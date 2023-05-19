@@ -29,7 +29,12 @@ class DetailViewController: UIViewController {
     }
     
     func setupTitleTask(){
-        detailTitleLabel.text = task?.status.rawValue
+        if task?.isLate ?? false {
+            detailTitleLabel.text = "Atrasado"
+        }
+        else {
+            detailTitleLabel.text = task?.status.rawValue
+        }
         detailTitleLabel.textColor = UIColor.systemBlue
         detailTitleTask.text = task?.title
         detailDescriptionTask.text = task?.description
