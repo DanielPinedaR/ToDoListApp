@@ -18,6 +18,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailTitleTask: UILabel!
     @IBOutlet weak var detailDescriptionTask: UILabel!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var detailDateTask: UILabel!
     @IBOutlet weak var finishControl: UISegmentedControl!
     
     weak var delegate: DetailViewControllerDelegate?
@@ -25,6 +26,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitleTask()
+        setupDetailDateTask()
         finishControl.selectedSegmentIndex = task?.status == .finish ? 1 : 0
     }
     
@@ -35,10 +37,22 @@ class DetailViewController: UIViewController {
         else {
             detailTitleLabel.text = task?.status.rawValue
         }
-        detailTitleLabel.textColor = UIColor.systemBlue
+        detailTitleLabel.textColor = UIColor(named: "quaternaryColor")
         detailTitleTask.text = task?.title
         detailDescriptionTask.text = task?.description
         detailDescriptionTask.isHidden = detailDescriptionTask.text == ""
+    }
+    
+    func setupDetailDateTask(){
+        
+        let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy"
+        if task?.date == nil {
+            detailDateTask.text = ""
+        }
+        else {
+            detailDateTask.text = dateFormatter.string(from: task?.date ?? Date.now)
+        }
     }
     
     @IBAction func finishControlAction(_ sender: UISegmentedControl) {

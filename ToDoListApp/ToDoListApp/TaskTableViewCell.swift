@@ -31,7 +31,6 @@ class TaskTableViewCell: UITableViewCell {
     }
     func setupStatusLabel(){
         statusLabel.font = .systemFont(ofSize: 23)
-        statusLabel.textColor = .orange
     }
     
     

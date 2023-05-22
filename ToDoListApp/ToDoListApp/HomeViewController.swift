@@ -29,7 +29,7 @@ class Task {
     
     var isLate: Bool {
         if let date {
-            return Calendar.current.startOfDay(for: date)  < Calendar.current.startOfDay(for: Date.now) 
+            return Calendar.current.startOfDay(for: date)  < Calendar.current.startOfDay(for: Date.now)
         } else {
             return false
         }
@@ -88,8 +88,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.taskLabel.text = TasksManager.shared.pendingTasks[indexPath.row].title
             if TasksManager.shared.pendingTasks[indexPath.row].isLate {
                 cell.statusLabel.text = "Atrasado"
+                cell.statusLabel.textColor = UIColor(named: "secondaryColor")
+             
             } else {
                 cell.statusLabel.text = TasksManager.shared.pendingTasks[indexPath.row].status.rawValue
+                cell.statusLabel.textColor = UIColor(named: "primaryColor")
+               
             }
             return cell
         } else {
